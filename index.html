@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>학교 출석 시스템</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="main-menu">
+            <h2>🏷️ 입장 선택</h2>
+            <p style="text-align:center; color:#888;">본인의 신분을 선택해주세요.</p>
+            <div class="mode-select">
+                <button class="mode-btn btn-student" onclick="showMode('student-mode')">학생</button>
+                <button class="mode-btn btn-teacher" onclick="showMode('teacher-auth')">교사</button>
+            </div>
+        </div>
+
+        <div id="student-mode" class="hidden">
+            <button class="back-btn" onclick="goHome()">←</button>
+            <h3>👨‍🎓 학생 출석</h3>
+            <label>학번</label>
+            <input type="number" id="studentNum" placeholder="학번 입력 (EX: 31012)">
+            <button class="submit-btn" onclick="checkST()">입력</button>
+        </div>
+
+        <div id="teacher-auth" class="hidden">
+            <button class="back-btn" onclick="goHome()">←</button>
+            <h3>🔐 교사 인증</h3>
+            <input type="password" id="pwInput" placeholder="비밀번호 입력">
+            <button class="submit-btn" onclick="checkAuth()">로그인</button>
+        </div>
+
+        <div id="teacher-mode" class="hidden">
+            <button class="back-btn" onclick="goHome()">←</button>
+            <h3>📋 실시간 명단</h3>
+            <div id="attendance-list" style="max-height: 300px; overflow-y: auto; margin-bottom: 15px;"></div>
+            <button class="submit-btn" style="background:#abdfff" onclick="Di_L()">담임 선생님 명단</button>
+            <button class="submit-btn" style="background:#c3e0a3" onclick="Dd_L()">야자 감독관 명단</button>
+            <button class="submit-btn" style="background:#f6c23e" onclick="copyToClipboard()">명단 추가</button>
+        </div>
+
+        <div id="teacher-add_list" class="hidden">
+            <button class="back-btn" onclick="showMode('teacher-mode')">←</button>
+            <h3> 명단 추가</h3>
+        </div>
+
+        <div id="Di_list" class="hidden">
+            <button class="back-btn" onclick="showMode('teacher-mode')">←</button>
+            <h3> 담임 선생님 명단</h3>
+        </div>
+
+        <div id="Dd_list" class="hidden">
+            <button class="back-btn" onclick="showMode('teacher-mode')">←</button>
+            <h3> 야자 감독관 명단</h3>
+        </div>
+
+        <div id="sucsses" class="hidden">
+            <div class="success-box">
+                <h1 style="font-size: 50px;">✅</h1>
+                <h3 id="res-name">학생 이름</h3>
+                <p id="res-detail" style="color: #666;"></p>
+                <button class="submit-btn" onclick="goHome()">처음으로</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
